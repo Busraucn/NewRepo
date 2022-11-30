@@ -1,0 +1,1128 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Anasablon.master.cs" Inherits="WMSDATA.Anasablon" %>
+
+<!DOCTYPE html>
+<html lang="tr">
+<head runat="server">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>WMSDATA | ANASAYFA </title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Toastr style -->
+    <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+    <!-- Gritter -->
+    <link href="js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+ <link href="css/plugins/footable/footable.core.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+      <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
+
+        <link href="css/plugins/slick/slick.css" rel="stylesheet">
+    <link href="css/plugins/slick/slick-theme.css" rel="stylesheet">
+      <link href="css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+
+       <link href="css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+     
+   
+    <link href="css/plugins/steps/jquery.steps.css" rel="stylesheet">
+     
+    <link href="css/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet">
+     <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+ 
+       
+                <div id="wrapper">
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            <img alt="image" class="" src="kullanici/logo.png">
+                            
+                             &nbsp 
+                             &nbsp 
+<asp:Image ID="imgPicture" Width="160" Height="45"  runat="server" />
+
+
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="block m-t-xs font-bold">   <%= WMSDATA .Anasablon .kullanisim  %>  <%=  WMSDATA .Anasablon .kullansoyisim  %></span>
+                                <span class="text-muted text-xs block"><%= WMSDATA .Anasablon  .firma  %> <b class="caret"></b></span>
+                            </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a class="dropdown-item" href="#"><%=WMSDATA .Anasablon .emaili %>  </a></li>
+                                <li><a class="dropdown-item" href="kullanici_giris.aspx">ÇIKIŞ</a></li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">
+                         <small > WMSDATA  </small>   
+                        </div>
+                    </li>
+                    
+                    <li >
+                        <a href="ansayfa.aspx"><i class="fa fa-th-large"></i> <span class="nav-label">ANASAYFA</span> </a>                        
+                    </li>                       
+                    <li>  
+                        <a href="#"><i class="fa fa-plus-circle"></i> <span class="nav-label">PERSONEL</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="personel_ekle.aspx"><i class="fa fa-diamond "></i> PERSONEL KAYIT</a></li>
+                            <li><a href="belge_ekle.aspx"><i class="fa fa-diamond "></i> PERSONEL BELGE KAYIT</a></li>
+                            <li><a href="personelmaaskayit.aspx"><i class="fa fa-diamond "></i> PERSONEL MAAŞ İŞLEMLERİ</a></li>
+                            <li><a href="personel_izin_ekle.aspx"><i class="fa fa-diamond "></i> İZİN AL</a></li>
+                            <li><a href="izin_ekle.aspx"><i class="fa fa-diamond "></i> PERSONEL İZİN YÖNETİMİ</a></li>
+                            <li><a href="hareketGoruntule.aspx"><i class="fa fa-diamond "></i> PERSONEL HAREKETLER</a></li>
+                        </ul>
+                    </li>
+                    <li> 
+                    <a href="#"><i class="fa fa-plus-circle"></i> <span class="nav-label">MALZEME</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="malzemetanimlama.aspx"><i class="fa fa-diamond "></i> MALZEME TİPİ TANIMLAMA </a></li>
+                            <li><a href="malzemetipitanimlama.aspx"><i class="fa fa-diamond "></i> MALZEME TANIMLAMA </a></li>
+                            <li><a href="aractipitanimlama.aspx"><i class="fa fa-diamond "></i> ARAÇ TİPİ TANIMLAMA </a></li>
+                            <li><a href="aractanimlama.aspx"><i class="fa fa-diamond "></i> ARAÇ KAYIT </a></li>
+                            <li><a href="carikayit.aspx"><i class="fa fa-diamond "></i> CARİ KAYIT </a></li>
+                            <li><a href="malzemestokkayit.aspx"><i class="fa fa-diamond "></i> STOK KAYIT </a></li>
+                        </ul>
+                    </li>
+                    <li> 
+                     <a href="#"><i class="fa fa-plus-circle"></i> <span class="nav-label">PROJE TANIMLAMA </span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="proje_tip_kayit.aspx"><i class="fa fa-diamond "></i> PROJE TİPİ KAYIT</a></li>
+                            <li><a href="proje_kayit.aspx"><i class="fa fa-diamond "></i> PROJE KAYIT</a></li>
+                            <li><a href="proje_bolum_kayit.aspx"><i class="fa fa-diamond "></i> PROJE BÖLÜM KAYIT</a></li>
+                            <li><a href="proje_konu_kayit.aspx"><i class="fa fa-diamond "></i> PROJE KONU KAYIT</a></li>
+                            <li><a href="proje_olay_kayit.aspx"><i class="fa fa-diamond "></i> PROJE OLAY KAYIT</a></li>
+                        </ul>
+                    </li>
+                    <li>  
+                        <a href="#"><i class="fa fa-plus-circle"></i> <span class="nav-label">PROJE PLANLAMA </span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="projeolayatama.aspx"><i class="fa fa-diamond "></i> PROJE OLAY ATAMA</a></li>
+                            <li><a href="projepersonelatama.aspx"><i class="fa fa-diamond "></i> PROJE PERSONEL ATAMA</a></li>
+                            <li><a href="projemalzemeatama.aspx"><i class="fa fa-diamond "></i> PROJE MALZEME ATAMA</a></li>
+                            <li><a href="projearacatama.aspx"><i class="fa fa-diamond "></i> PROJE ARAÇ ATAMA</a></li>
+                        </ul>
+                    </li>
+                    <li>  
+                        <a href="#"><i class="fa fa-plus-circle"></i> <span class="nav-label">PROJE TAKİP </span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="personelhareketizleme.aspx"><i class="fa fa-diamond  "></i> PERSONEL HAREKETLERİ İZLEME</a></li>
+                            <li><a href="projebazliizleme.aspx"><i class="fa fa-diamond "></i> PROJE BAZLI İZLEME</a></li>
+                            <li><a href="oalybazliizleme.aspx"><i class="fa fa-diamond "></i> OLAY BAZLI İZLEME</a></li>
+                        </ul>
+                    </li>
+                     <li>  
+                    <a href="#"><i class="fa fa-plus-circle"></i> <span class="nav-label">AYARLAR</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                             <li><a href="gorev_tanimi_ekle.aspx"><i class="fa fa-diamond "></i> GÖREV TANIMLARI</a></li>
+                             <li><a href="departman_tanimi_ekle.aspx"><i class="fa fa-diamond "></i> DEPARTMAN TANIMLARI</a></li>
+                             <li><a href="izin_tanimi_ekle.aspx"><i class="fa fa-diamond "></i> İZİN TANIMLARI</a></li>
+                            <li><a href="izin_tanimi_ayarlar.aspx"><i class="fa fa-diamond "></i> İZİN AYARLAR</a></li>
+                            <li><a href="personel_yovmiye_tanimla.aspx"><i class="fa fa-diamond "></i> YÖVMİYE TANIMLARI</a></li>
+                            <li><a href="yovmiye_tanimi_ayarlar.aspx"><i class="fa fa-diamond "></i> YÖVMİYE AYARLAR</a></li>
+                    </ul>
+                         </li>
+                     <li>  
+                          <a href="#"><i class="fa fa-plus-circle"></i> <span class="nav-label">ücret Hesaplama</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                             <li><a href="CalismaZamaniTanim.aspx"><i class="fa fa-diamond "></i> ÇALIŞMA SAATLERİ TANIMLARI</a></li>
+                             <li><a href="HourlyWage.aspx"><i class="fa fa-diamond "></i>PERSONEL ÇALIŞMA SAATLERİ GÖRÜNTÜLE</a></li>
+                           
+                    </ul>
+                </li>
+
+                    <%
+                        if (WMSDATA.Anasablon.sirketidi.ToString () == "-20")
+                        {  %>
+                                  <li>  
+                        <a href="#"><i class="fa fa-spinner "></i> <span class="nav-label">YÖNETİCİ MENÜSÜ </span><span class="fa arrow"></span></a>
+                                      <ul class="nav nav-second-level collapse">
+
+                    <li>
+                        <a href="firma_ekle.aspx"><i class="fa fa-plus-circle "></i> <span class="nav-label">FİRMA KAYDET</span></a> </li>
+                       <li><a href="kullanici_sayfasi.aspx"><i class="fa fa-users"></i> <span class="nav-label">KULLANICI KAYDET</span></a></li>
+                   
+                    </ul>
+                     </li>
+                    <%} %>
+                    <li>
+                        <a href="pdf/help.pdf"><i class="fa fa-question-circle-o"></i> <span class="nav-label">YARDIM</span></a>
+                       
+                    </li>
+                
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+        <div class="row border-bottom">
+        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+            <form role="search" class="navbar-form-custom" action="search_results.html">
+                <div class="form-group">
+                    
+                </div>
+            </form>
+        </div>
+            <ul class="nav navbar-top-links navbar-right">
+                <li style="padding: 20px">
+                    <span class="m-r-sm text-muted welcome-message"> <strong > wmsdata.net </strong>' e HOŞGELDİNİZ </span>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                       
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages dropdown-menu-right">
+                       
+                  
+                        <li class="dropdown-divider"></li>
+                        <li>
+                            <div class="dropdown-messages-box">
+                                <a class="dropdown-item float-left" href="profile.html">
+                                    <img alt="image" class="rounded-circle" src="img/profile.jpg">
+                                </a>
+                                <div class="media-body ">
+                                    <small class="float-right">23h ago</small>
+                                    <strong>Teknopart</strong> & <strong>Programing</strong>. <br>
+                                    <small class="text-muted">2021</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                      
+                    </ul>
+                </li>
+               
+
+
+                <li>
+                    <a  id="cikis" runat ="server" onserverclick ="cikis_ServerClick"  >
+                        <i class="fa fa-sign-out"  ></i>ÇIKIŞ 
+                    </a>
+                </li>
+                <li>
+                  
+                </li>
+            </ul>
+
+        </nav>
+
+       </div>
+
+            
+
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+
+
+          </div></div>
+
+        <!-- Mainly scripts -->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+      <script src="js/plugins/nestable/jquery.nestable.js"></script>
+
+       
+
+    <!-- Custom and plugin javascript -->
+    <script src="js/inspinia.js"></script>
+    <script src="js/plugins/pace/pace.min.js"></script>
+
+   
+
+    <script>
+        $(document).ready(function () {
+
+            var updateOutput = function (e) {
+                var list = e.length ? e : $(e.target),
+                    output = list.data('output');
+                if (window.JSON) {
+                    output.val(window.JSON.stringify(list.nestable('serialize')));//, null, 2));
+                } else {
+                    output.val('JSON browser support required for this demo.');
+                }
+            };
+            // activate Nestable for list 1
+            $('#nestable').nestable({
+                group: 1
+            }).on('change', updateOutput);
+
+            // activate Nestable for list 2
+            $('#nestable2').nestable({
+                group: 1
+            }).on('change', updateOutput);
+            // activate Nestable for list 2
+            $('#nestable3').nestable({
+                group: 1
+            }).on('change', updateOutput);
+
+
+            // output initial serialised data
+            updateOutput($('#nestable').data('output', $('#nestable-output')));
+            updateOutput($('#nestable2').data('output', $('#nestable2-output')));
+            updateOutput($('#nestable3').data('output', $('#nestable3-output')));
+            $('#nestable-menu').on('click', function (e) {
+                var target = $(e.target),
+                    action = target.data('action');
+                if (action === 'expand-all') {
+                    $('.dd').nestable('expandAll');
+                }
+                if (action === 'collapse-all') {
+                    $('.dd').nestable('collapseAll');
+                }
+            });
+        });
+    </script>
+
+  
+
+    <!-- slick carousel-->
+    <script src="js/plugins/slick/slick.min.js"></script>
+
+    <!-- Additional style only for demo purpose -->
+    <style>
+        .slick_demo_2 .ibox-content {
+            margin: 0 10px;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+
+
+            $('.slick_demo_1').slick({
+                dots: true
+            });
+
+            $('.slick_demo_2').slick({
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                centerMode: true,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                            infinite: true,
+                            dots: true
+                        }
+                    },
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            });
+
+            $('.slick_demo_3').slick({
+                infinite: true,
+                speed: 500,
+                fade: true,
+                cssEase: 'linear',
+                adaptiveHeight: true
+            });
+        });
+
+    </script>
+    <!-- Custom and plugin javascript -->
+    <script src="js/inspinia.js"></script>
+    <script src="js/plugins/pace/pace.min.js"></script>
+
+    <!-- FooTable -->
+    <script src="js/plugins/footable/footable.all.min.js"></script>
+
+    <!-- Page-Level Scripts -->
+    <script>
+        $(document).ready(function () {
+
+            $('.footable').footable();
+
+        });
+
+    </script>
+    <!-- Ladda -->
+    <script src="js/plugins/ladda/spin.min.js"></script>
+    <script src="js/plugins/ladda/ladda.min.js"></script>
+    <script src="js/plugins/ladda/ladda.jquery.min.js"></script>
+
+
+
+    <!-- Flot -->
+    <script src="js/plugins/flot/jquery.flot.js"></script>
+    <script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="js/plugins/flot/jquery.flot.spline.js"></script>
+    <script src="js/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="js/plugins/flot/jquery.flot.pie.js"></script>
+
+    <!-- Peity -->
+    <script src="js/plugins/peity/jquery.peity.min.js"></script>
+    <script src="js/demo/peity-demo.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="js/inspinia.js"></script>
+    <script src="js/plugins/pace/pace.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+    <!-- GITTER -->
+    <script src="js/plugins/gritter/jquery.gritter.min.js"></script>
+
+    <!-- Sparkline -->
+    <script src="js/plugins/sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Sparkline demo data  -->
+    <script src="js/demo/sparkline-demo.js"></script>
+
+    <!-- ChartJS-->
+    <script src="js/plugins/chartJs/Chart.min.js"></script>
+
+    <!-- Toastr -->
+    <script src="js/plugins/toastr/toastr.min.js"></script>
+    
+  
+   
+
+    <!-- Steps -->
+    <script src="js/plugins/steps/jquery.steps.min.js"></script>
+
+    <!-- Jquery Validate -->
+    <script src="js/plugins/validate/jquery.validate.min.js"></script>
+   
+
+    <script src="js/plugins/dataTables/datatables.min.js"></script>
+    <script src="js/plugins/dataTables/dataTables.bootstrap4.min.js"></script>
+
+    
+
+
+    <!-- Page-Level Scripts -->
+    <script>
+        $(document).ready(function () {
+
+            $('.footable').footable();
+            $('.footable2').footable();
+
+        });
+
+    </script>
+    
+    <script>
+        $(document).ready(function () {
+
+            $('.tagsinput').tagsinput({
+                tagClass: 'label label-primary'
+            });
+
+            var $image = $(".image-crop > img")
+            $($image).cropper({
+                aspectRatio: 1.618,
+                preview: ".img-preview",
+                done: function (data) {
+                    // Output the result data for cropping image.
+                }
+            });
+
+            var $inputImage = $("#inputImage");
+            if (window.FileReader) {
+                $inputImage.change(function () {
+                    var fileReader = new FileReader(),
+                        files = this.files,
+                        file;
+
+                    if (!files.length) {
+                        return;
+                    }
+
+                    file = files[0];
+
+                    if (/^image\/\w+$/.test(file.type)) {
+                        fileReader.readAsDataURL(file);
+                        fileReader.onload = function () {
+                            $inputImage.val("");
+                            $image.cropper("reset", true).cropper("replace", this.result);
+                        };
+                    } else {
+                        showMessage("Please choose an image file.");
+                    }
+                });
+            } else {
+                $inputImage.addClass("hide");
+            }
+
+            $("#download").click(function () {
+                window.open($image.cropper("getDataURL"));
+            });
+
+            $("#zoomIn").click(function () {
+                $image.cropper("zoom", 0.1);
+            });
+
+            $("#zoomOut").click(function () {
+                $image.cropper("zoom", -0.1);
+            });
+
+            $("#rotateLeft").click(function () {
+                $image.cropper("rotate", 45);
+            });
+
+            $("#rotateRight").click(function () {
+                $image.cropper("rotate", -45);
+            });
+
+            $("#setDrag").click(function () {
+                $image.cropper("setDragMode", "crop");
+            });
+
+            var mem = $('#data_1 .input-group.date').datepicker({
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                calendarWeeks: true,
+                autoclose: true
+            });
+
+            var yearsAgo = new Date();
+            yearsAgo.setFullYear(yearsAgo.getFullYear() - 20);
+
+            $('#selector').datepicker('setDate', yearsAgo);
+
+
+            $('#data_2 .input-group.date').datepicker({
+                startView: 1,
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true,
+                format: "dd/mm/yyyy"
+            });
+
+            $('#data_3 .input-group.date').datepicker({
+                startView: 2,
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
+
+            $('#data_4 .input-group.date').datepicker({
+                minViewMode: 1,
+                keyboardNavigation: false,
+                forceParse: false,
+                forceParse: false,
+                autoclose: true,
+                todayHighlight: true
+            });
+
+            $('#data_5 .input-daterange').datepicker({
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
+
+            var elem = document.querySelector('.js-switch');
+            var switchery = new Switchery(elem, { color: '#1AB394' });
+
+            var elem_2 = document.querySelector('.js-switch_2');
+            var switchery_2 = new Switchery(elem_2, { color: '#ED5565' });
+
+            var elem_3 = document.querySelector('.js-switch_3');
+            var switchery_3 = new Switchery(elem_3, { color: '#1AB394' });
+
+            var elem_4 = document.querySelector('.js-switch_4');
+            var switchery_4 = new Switchery(elem_4, { color: '#f8ac59' });
+            switchery_4.disable();
+
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green'
+            });
+
+            $('.demo1').colorpicker();
+
+            var divStyle = $('.back-change')[0].style;
+            $('#demo_apidemo').colorpicker({
+                color: divStyle.backgroundColor
+            }).on('changeColor', function (ev) {
+                divStyle.backgroundColor = ev.color.toHex();
+            });
+
+            $('.clockpicker').clockpicker();
+
+            $('input[name="daterange"]').daterangepicker();
+
+            $('#reportrange span').html(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
+
+            $('#reportrange').daterangepicker({
+                format: 'MM/DD/YYYY',
+                startDate: moment().subtract(29, 'days'),
+                endDate: moment(),
+                minDate: '01/01/2012',
+                maxDate: '12/31/2015',
+                dateLimit: { days: 60 },
+                showDropdowns: true,
+                showWeekNumbers: true,
+                timePicker: false,
+                timePickerIncrement: 1,
+                timePicker12Hour: true,
+                ranges: {
+                    'Today': [moment(), moment()],
+                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                    'This Month': [moment().startOf('month'), moment().endOf('month')],
+                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+                opens: 'right',
+                drops: 'down',
+                buttonClasses: ['btn', 'btn-sm'],
+                applyClass: 'btn-primary',
+                cancelClass: 'btn-default',
+                separator: ' to ',
+                locale: {
+                    applyLabel: 'Submit',
+                    cancelLabel: 'Cancel',
+                    fromLabel: 'From',
+                    toLabel: 'To',
+                    customRangeLabel: 'Custom',
+                    daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+                    monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                    firstDay: 1
+                }
+            }, function (start, end, label) {
+                console.log(start.toISOString(), end.toISOString(), label);
+                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+            });
+
+            $(".select2_demo_1").select2();
+            $(".select2_demo_2").select2();
+            $(".select2_demo_3").select2({
+                placeholder: "Select a state",
+                allowClear: true
+            });
+
+
+            $(".touchspin1").TouchSpin({
+                buttondown_class: 'btn btn-white',
+                buttonup_class: 'btn btn-white'
+            });
+
+            $(".touchspin2").TouchSpin({
+                min: 0,
+                max: 100,
+                step: 0.1,
+                decimals: 2,
+                boostat: 5,
+                maxboostedstep: 10,
+                postfix: '%',
+                buttondown_class: 'btn btn-white',
+                buttonup_class: 'btn btn-white'
+            });
+
+            $(".touchspin3").TouchSpin({
+                verticalbuttons: true,
+                buttondown_class: 'btn btn-white',
+                buttonup_class: 'btn btn-white'
+            });
+
+            $('.dual_select').bootstrapDualListbox({
+                selectorMinimalHeight: 160
+            });
+
+
+        });
+
+        $('.chosen-select').chosen({ width: "100%" });
+
+        $("#ionrange_1").ionRangeSlider({
+            min: 0,
+            max: 5000,
+            type: 'double',
+            prefix: "$",
+            maxPostfix: "+",
+            prettify: false,
+            hasGrid: true
+        });
+
+        $("#ionrange_2").ionRangeSlider({
+            min: 0,
+            max: 10,
+            type: 'single',
+            step: 0.1,
+            postfix: " carats",
+            prettify: false,
+            hasGrid: true
+        });
+
+        $("#ionrange_3").ionRangeSlider({
+            min: -50,
+            max: 50,
+            from: 0,
+            postfix: "°",
+            prettify: false,
+            hasGrid: true
+        });
+
+        $("#ionrange_4").ionRangeSlider({
+            values: [
+                "January", "February", "March",
+                "April", "May", "June",
+                "July", "August", "September",
+                "October", "November", "December"
+            ],
+            type: 'single',
+            hasGrid: true
+        });
+
+        $("#ionrange_5").ionRangeSlider({
+            min: 10000,
+            max: 100000,
+            step: 100,
+            postfix: " km",
+            from: 55000,
+            hideMinMax: true,
+            hideFromTo: false
+        });
+
+        $(".dial").knob();
+
+        var basic_slider = document.getElementById('basic_slider');
+
+        noUiSlider.create(basic_slider, {
+            start: 40,
+            behaviour: 'tap',
+            connect: 'upper',
+            range: {
+                'min': 20,
+                'max': 80
+            }
+        });
+
+        var range_slider = document.getElementById('range_slider');
+
+        noUiSlider.create(range_slider, {
+            start: [40, 60],
+            behaviour: 'drag',
+            connect: true,
+            range: {
+                'min': 20,
+                'max': 80
+            }
+        });
+
+        var drag_fixed = document.getElementById('drag-fixed');
+
+        noUiSlider.create(drag_fixed, {
+            start: [40, 60],
+            behaviour: 'drag-fixed',
+            connect: true,
+            range: {
+                'min': 20,
+                'max': 80
+            }
+        });
+
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#wizard").steps();
+            $("#form").steps({
+                bodyTag: "fieldset",
+                onStepChanging: function (event, currentIndex, newIndex) {
+                    // Always allow going backward even if the current step contains invalid fields!
+                    if (currentIndex > newIndex) {
+                        return true;
+                    }
+
+                    // Forbid suppressing "Warning" step if the user is to young
+                    if (newIndex === 3 && Number($("#age").val()) < 18) {
+                        return false;
+                    }
+
+                    var form = $(this);
+
+                    // Clean up if user went backward before
+                    if (currentIndex < newIndex) {
+                        // To remove error styles
+                        $(".body:eq(" + newIndex + ") label.error", form).remove();
+                        $(".body:eq(" + newIndex + ") .error", form).removeClass("error");
+                    }
+
+                    // Disable validation on fields that are disabled or hidden.
+                    form.validate().settings.ignore = ":disabled,:hidden";
+
+                    // Start validation; Prevent going forward if false
+                    return form.valid();
+                },
+                onStepChanged: function (event, currentIndex, priorIndex) {
+                    // Suppress (skip) "Warning" step if the user is old enough.
+                    if (currentIndex === 2 && Number($("#age").val()) >= 18) {
+                        $(this).steps("next");
+                    }
+
+                    // Suppress (skip) "Warning" step if the user is old enough and wants to the previous step.
+                    if (currentIndex === 2 && priorIndex === 3) {
+                        $(this).steps("previous");
+                    }
+                },
+                onFinishing: function (event, currentIndex) {
+                    var form = $(this);
+
+                    // Disable validation on fields that are disabled.
+                    // At this point it's recommended to do an overall check (mean ignoring only disabled fields)
+                    form.validate().settings.ignore = ":disabled";
+
+                    // Start validation; Prevent form submission if false
+                    return form.valid();
+                },
+                onFinished: function (event, currentIndex) {
+                    var form = $(this);
+
+                    // Submit form input
+                    form.submit();
+                }
+            }).validate({
+                errorPlacement: function (error, element) {
+                    element.before(error);
+                },
+                rules: {
+                    confirm: {
+                        equalTo: "#password"
+                    }
+                }
+            });
+        });
+    </script>
+
+    <!-- Page-Level Scripts -->
+    <script>
+        $(document).ready(function () {
+            $('.dataTables-example').DataTable({
+                pageLength: 25,
+                responsive: true,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                    { extend: 'copy' },
+                    { extend: 'csv' },
+                    { extend: 'excel', title: 'Rapor' },
+                    { extend: 'pdf', title: 'Rapor' },
+
+                    {
+                        extend: 'print',
+                        customize: function (win) {
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }
+                ]
+
+            });
+
+        });
+
+    </script>
+  
+
+    <script>
+
+        $(document).ready(function () {
+
+            // Bind normal buttons
+            Ladda.bind('.ladda-button', { timeout: 2000 });
+
+            // Bind progress buttons and simulate loading progress
+            Ladda.bind('.progress-demo .ladda-button', {
+                callback: function (instance) {
+                    var progress = 0;
+                    var interval = setInterval(function () {
+                        progress = Math.min(progress + Math.random() * 0.1, 1);
+                        instance.setProgress(progress);
+
+                        if (progress === 1) {
+                            instance.stop();
+                            clearInterval(interval);
+                        }
+                    }, 200);
+                }
+            });
+
+
+            var l = $('.ladda-button-demo').ladda();
+
+            l.click(function () {
+                // Start loading
+                l.ladda('start');
+
+                // Timeout example
+                // Do something in backend and then stop ladda
+                setTimeout(function () {
+                    l.ladda('stop');
+                }, 12000)
+
+
+            });
+
+        });
+
+</script>
+
+    
+
+    <!-- iCheck -->
+    <script src="js/plugins/iCheck/icheck.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.i-checks').iCheck({
+                    checkboxClass: 'icheckbox_square-green',
+                    radioClass: 'iradio_square-green',
+                });
+            });
+        </script>
+
+    <script>
+        $(document).ready(function () {
+            setTimeout(function () {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 4000
+                };
+                toastr.success(' ', 'wmsdata.net HOŞGELDİN');
+
+            }, 1300);
+
+
+            var data1 = [
+                [0, 4], [1, 8], [2, 5], [3, 10], [4, 4], [5, 16], [6, 5], [7, 11], [8, 6], [9, 11], [10, 30], [11, 10], [12, 13], [13, 4], [14, 3], [15, 3], [16, 6]
+            ];
+            var data2 = [
+                [0, 1], [1, 0], [2, 2], [3, 0], [4, 1], [5, 3], [6, 1], [7, 5], [8, 2], [9, 3], [10, 2], [11, 1], [12, 0], [13, 2], [14, 8], [15, 0], [16, 0]
+            ];
+            $("#flot-dashboard-chart").length && $.plot($("#flot-dashboard-chart"), [
+                data1, data2
+            ],
+                {
+                    series: {
+                        lines: {
+                            show: false,
+                            fill: true
+                        },
+                        splines: {
+                            show: true,
+                            tension: 0.4,
+                            lineWidth: 1,
+                            fill: 0.4
+                        },
+                        points: {
+                            radius: 0,
+                            show: true
+                        },
+                        shadowSize: 2
+                    },
+                    grid: {
+                        hoverable: true,
+                        clickable: true,
+                        tickColor: "#d5d5d5",
+                        borderWidth: 1,
+                        color: '#d5d5d5'
+                    },
+                    colors: ["#1ab394", "#1C84C6"],
+                    xaxis: {
+                    },
+                    yaxis: {
+                        ticks: 4
+                    },
+                    tooltip: false
+                }
+            );
+
+            var doughnutData = {
+                labels: ["App", "Software", "Laptop"],
+                datasets: [{
+                    data: [300, 50, 100],
+                    backgroundColor: ["#a3e1d4", "#dedede", "#9CC3DA"]
+                }]
+            };
+
+
+            var doughnutOptions = {
+                responsive: false,
+                legend: {
+                    display: false
+                }
+            };
+
+
+            var ctx4 = document.getElementById("doughnutChart").getContext("2d");
+            new Chart(ctx4, { type: 'doughnut', data: doughnutData, options: doughnutOptions });
+
+            var doughnutData = {
+                labels: ["App", "Software", "Laptop"],
+                datasets: [{
+                    data: [70, 27, 85],
+                    backgroundColor: ["#a3e1d4", "#dedede", "#9CC3DA"]
+                }]
+            };
+
+
+            var doughnutOptions = {
+                responsive: false,
+                legend: {
+                    display: false
+                }
+            };
+
+
+            var ctx4 = document.getElementById("doughnutChart2").getContext("2d");
+            new Chart(ctx4, { type: 'doughnut', data: doughnutData, options: doughnutOptions });
+
+        });
+    </script>
+     <!-- Data picker -->
+   <script src="js/plugins/datapicker/bootstrap-datepicker.js"></script>
+    <!-- Clock picker 
+    <script src="js/plugins/clockpicker/clockpicker.js"></script>
+         <script type="text/javascript">
+             $(document).ready(function () {
+                 $('#datetime1').clockpicker();
+             });
+         </script>
+   -->
+    <!-- Date range use moment.js same as full calendar plugin -->
+    <script src="js/plugins/fullcalendar/moment.min.js"></script>
+
+    <!-- Date range picker -->
+    <script src="js/plugins/daterangepicker/daterangepicker.js"></script>
+       <script>
+           $(document).ready(function () {
+               var mem = $('#data_1 .input-group.date').datepicker({
+                   todayBtn: "linked",
+                   keyboardNavigation: false,
+                   forceParse: false,
+                   calendarWeeks: true,
+                   autoclose: true
+               });
+
+               var yearsAgo = new Date();
+               yearsAgo.setFullYear(yearsAgo.getFullYear() - 20);
+
+               $('#selector').datepicker('setDate', yearsAgo);
+
+
+               $('#data_2 .input-group.date').datepicker({
+                   startView: 1,
+                   todayBtn: "linked",
+                   keyboardNavigation: false,
+                   forceParse: false,
+                   autoclose: true,
+                   format: "dd/mm/yyyy"
+               });
+
+               $('#data_3 .input-group.date').datepicker({
+                   startView: 2,
+                   todayBtn: "linked",
+                   keyboardNavigation: false,
+                   forceParse: false,
+                   autoclose: true
+               });
+
+               $('#data_4 .input-group.date').datepicker({
+                   minViewMode: 1,
+                   keyboardNavigation: false,
+                   forceParse: false,
+                   forceParse: false,
+                   autoclose: true,
+                   todayHighlight: true
+               });
+
+               $('#data_5 .input-daterange').datepicker({
+                   keyboardNavigation: false,
+                   forceParse: false,
+                   autoclose: true
+               });
+               
+               $('input[id="daterange"]').daterangepicker();
+               $('input[id="daterangemodal1"]').daterangepicker();
+               $('input[id="daterangemodal2"]').daterangepicker();
+
+               $('#reportrange span').html(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
+
+               $('#reportrange').daterangepicker({
+                   format: 'MM/DD/YYYY',
+                   startDate: moment().subtract(29, 'days'),
+                   endDate: moment(),
+                   minDate: '01/01/2012',
+                   maxDate: '12/31/2015',
+                   dateLimit: { days: 60 },
+                   showDropdowns: true,
+                   showWeekNumbers: true,
+                   timePicker: false,
+                   timePickerIncrement: 1,
+                   timePicker12Hour: true,
+                   ranges: {
+                       'Today': [moment(), moment()],
+                       'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                       'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                       'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                       'This Month': [moment().startOf('month'), moment().endOf('month')],
+                       'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                   },
+                   opens: 'right',
+                   drops: 'down',
+                   buttonClasses: ['btn', 'btn-sm'],
+                   applyClass: 'btn-primary',
+                   cancelClass: 'btn-default',
+                   separator: ' to ',
+                   locale: {
+                       applyLabel: 'Submit',
+                       cancelLabel: 'Cancel',
+                       fromLabel: 'From',
+                       toLabel: 'To',
+                       customRangeLabel: 'Custom',
+                       daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+                       monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                       firstDay: 1
+                   }
+               }, function (start, end, label) {
+                   console.log(start.toISOString(), end.toISOString(), label);
+                   $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+               });
+           });
+       </script>
+
+
+</body>
+</html>
