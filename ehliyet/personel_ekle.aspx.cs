@@ -257,7 +257,7 @@ namespace WMSDATA
             imgSize = fluPicture.PostedFile.ContentLength;
             if (fluPicture.PostedFile != null && fluPicture.PostedFile.FileName != "")
             {
-                fluPicture.SaveAs(Server.MapPath(imgPath));
+                fluPicture.SaveAs(Server.MapPath("~/images/"+ imgName));
                 imgPicture.ImageUrl = "~/" + imgPath;
             }
 
