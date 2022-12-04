@@ -227,10 +227,10 @@ namespace WMSDATA
             using (MemoryStream ms = new MemoryStream())
             {
                 QRCodeGenerator koduret = new QRCodeGenerator();
-                QRCodeGenerator.QRCode kod = koduret.CreateQrCode(kullanici_giris.kullaniciSİrket_id + "-" + "wmsdata.net" + "-" + tcnumarasi.ToString(), QRCodeGenerator.ECCLevel.Q);
-                using (Bitmap bmp = kod.GetGraphic(5))
+           //     QRCodeGenerator.QRCode kod = koduret.CreateQrCode(kullanici_giris.kullaniciSİrket_id + "-" + "wmsdata.net" + "-" + tcnumarasi.ToString(), QRCodeGenerator.ECCLevel.Q);
+         //       using (Bitmap bmp = kod.GetGraphic(5))
                 {
-                    bmp.Save(ms, ImageFormat.Png);
+           //         bmp.Save(ms, ImageFormat.Png);
                     qrimage.ImageUrl = "data:imge/png;base64," + Convert.ToBase64String(ms.ToArray());
                 }
             }
