@@ -213,6 +213,15 @@
                                                 <small class="font-bold">Yevmiye Tanımla</small>
                                             </div>
                                             <div class="modal-body">
+                                                <div class="form-group"><fieldset>
+                                    <div class="col-sm-12" style="text-align: left">
+                                                        Personel: 
+                                  
+                                        <asp:DropDownList ID="yevmiyePersonel" runat="server" AutoPostBack="false" Style="text-transform: uppercase" class="select2_demo_3 form-control col-sm-6" required="">
+                                        </asp:DropDownList>
+                                    
+                                </div></fieldset></div>
+
                                                  <div class="dd-handle">
                                                     <div class="form-group">
                                                         <div class="col-sm-12" style="text-align: left">Yevmiye bedeli :

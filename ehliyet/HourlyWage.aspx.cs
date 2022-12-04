@@ -70,6 +70,10 @@ namespace WMSDATA
             personelmodal.DataTextField = "TcNo";
             personelmodal.DataValueField = "Id";
             personelmodal.DataBind();
+            yevmiyePersonel.DataSource = dtbl;
+            yevmiyePersonel.DataTextField = "TcNo";
+            yevmiyePersonel.DataValueField = "TcNo";
+            yevmiyePersonel.DataBind();
             con.Close();
         }
         public void fillcalismaSaatiTanim()
@@ -270,6 +274,7 @@ namespace WMSDATA
             SqlCommand cmd = new SqlCommand("YevmiyeKaydetGuncelle", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@PId", 0);
+            cmd.Parameters.AddWithValue("@PTc", yevmiyePersonel.SelectedValue);
             cmd.Parameters.AddWithValue("@PyevmiyeBedeli", price.Value);
             cmd.Parameters.AddWithValue("@PbaslamaT", Convert.ToDateTime(bdate.Value));
 

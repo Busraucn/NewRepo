@@ -43,6 +43,10 @@ namespace WMSDATA
         public static string aciklama = "";
 
         public static string id_sil = "";
+        public static string id_duzenle = "";
+
+        public static string[] ElleDuzeltildi;
+        public static string[] HareketSonuc;
 
         public static string view_ad = "";
         public static string view_tc = "";
@@ -72,7 +76,7 @@ namespace WMSDATA
         public static DateTime bugununtarihi = Convert.ToDateTime(DateTime.Now);
         public static DateTime bugununtarihi2 = Convert.ToDateTime(DateTime.Now);
         public static int verisay = 0;
-        public static int[] id;
+        public static string[] id;
         public static string[] odemedurmu_id;
         public static string[] faturadurumu_id;
         public static string[] belgedurumu_id;
@@ -94,8 +98,6 @@ namespace WMSDATA
         public static string[] altfirma_id;
         public static string[] odemetutari_id;
         public static string[] odemetarihi_id;
-        public static string[] faturano_id;
-        public static string[] faturatarihi_id;
         public static DateTime ilktarihim = Convert.ToDateTime("1900 - 01 - 01 00:00:00.000");
         public static DateTime sontarihim = Convert.ToDateTime("1900 - 01 - 01 00:00:00.000");
         public static int move;
@@ -212,6 +214,9 @@ namespace WMSDATA
 
                 }
             }
+             id_duzenle = Request["id_duzenle"];
+        
+
             dogru_uyari.Visible = false;
             yanlis_uyari.Visible = false;
             bugununtarihim = bugununtarihi.ToString();
@@ -260,6 +265,7 @@ namespace WMSDATA
 
             verisay = (int)C.ExecuteScalar();
 
+            id = new string[verisay + 1];
             TcNo = new string[verisay + 1];
             KartNo = new string[verisay + 1];
             Adi = new string[verisay + 1];
@@ -269,7 +275,8 @@ namespace WMSDATA
             KayitKaynak = new string[verisay + 1];
             Durum = new string[verisay + 1];
             KayitKullanici = new string[verisay + 1];
-            
+            ElleDuzeltildi = new string[verisay + 1];
+            HareketSonuc = new string[verisay + 1];
 
             //   SqlCommand S = new SqlCommand("SELECT belge_takip.tc , belge_takip.Id , uye_kayit.ad,uye_kayit.soyad,uye_kayit.dogumT,meslekDallari.meslekAdi,belgeVerenFirma.firmaAdı,sirketBilgi.sirketAdı,belge_takip.odemedurumu,belge_takip.faturadurumu.belge_takip.belgeDurumu FROM belge_takip,uye_kayit,belgeVerenFirma,meslekDallari,sirketBilgi WHERE   belge_takip.tc=uye_kayit.Tc AND belge_takip.meslekdali_id=meslekDallari.Id AND belge_takip.belgeverenfirma_id=belgeVerenFirma.Id AND belge_takip.kurum_id=sirketBilgi.Id", con);
             SqlCommand control = new SqlCommand("SELECT VIEW_HAREKETLER.* FROM VIEW_HAREKETLER", con);
@@ -277,7 +284,7 @@ namespace WMSDATA
             int i = verisay;
             while (dr.Read())
             {
-
+                id[i - 1] = dr["hareketId"].ToString();
                 TcNo[i - 1] = dr["TcNo"].ToString();
                 KartNo[i - 1] = dr["KartNo"].ToString();
                 Adi[i - 1] = dr["ad"].ToString() + " " + dr["soyad"].ToString();
@@ -286,6 +293,8 @@ namespace WMSDATA
                 KayitKaynak[i - 1] = dr["KayitKaynak"].ToString();
                 Durum[i - 1] = dr["Durum"].ToString();
                 KayitKullanici[i - 1] = dr["KayitKullanici"].ToString();
+                ElleDuzeltildi[i - 1] = dr["ElleDuzeltildi"].ToString();
+                HareketSonuc[i - 1] = dr["HareketSonuc"].ToString();
                 //  MessageBox.Show(" noluyo " + belgedurumu_id[i - 1]);
                 i--;
             }
@@ -312,7 +321,21 @@ namespace WMSDATA
             throw new NotImplementedException();
         }
 
- 
+        protected void personelCalismaKaydet_ServerClick(object sender, EventArgs e)
+        {
+
+          
+            con.Open();
+            if (Request.QueryString["id_duzenle"] != null)
+            {
+                SqlCommand ww = new SqlCommand("UPDATE Hareket set ElleDuzeltildi=1 , HareketSonuc='" + calismaDurum.Value + "' where Id ='" + int.Parse( hareketId.Value) + "'", con);
+                ww.ExecuteNonQuery();
+                SqlDataReader dw = ww.ExecuteReader();
+                dw.Close();
+            }
+           
+            con.Close();
         }
+    }
    
 }

@@ -168,6 +168,15 @@ namespace WMSDATA
         protected global::System.Web.UI.HtmlControls.HtmlButton yevmiyeTanimla;
 
         /// <summary>
+        /// yevmiyePersonel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList yevmiyePersonel;
+
+        /// <summary>
         /// price control.
         /// </summary>
         /// <remarks>
