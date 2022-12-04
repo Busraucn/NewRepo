@@ -105,11 +105,18 @@
                                       <th data-hide="phone,tablet">HareketTipi</th>
                                       <th data-hide="phone,tablet">KayitKaynak</th>
                                       <th data-hide="phone,tablet">Durum</th>
+
                                       <th data-hide="phone,tablet">KayitKullanici </th>
+                           <th data-hide="phone,tablet">Hareket Sonuç </th>
+                                      <th data-hide="phone,tablet">Hareket Elle Düzeltildi </th>
+                                   
+                                      <th data-hide="phone,tablet">Hareket Düzenle </th>
+                       
                     
                     </tr>
                     </thead>
                           <tbody>
+
 
                                     <%for (int i = 0; i < verisay; i++)
                                         { %>
@@ -156,13 +163,83 @@
                                      <td><%=HareketTipi[i] %></td>
                                      <td><%=KayitKaynak[i] %></td>
                                      <td><%=Durum[i] %> </td>                                      
-                                     <td class="center"><%=KayitKullanici[i] %></td>
-                                     
+                                     <td class="center"><%=KayitKullanici[i] %></td>     
+                                         <td><%=HareketSonuc[i] %> </td>    
+                                    <%
+                                    if( ElleDuzeltildi[i]  == "True" )
+                                    { %> 
+                                     <td> Düzenlendi  </td>  
+                                  <%  }%> 
+                                    <%else{ %>
+                         
+                           <td> Düzenlenme Yok <%= id[i] %>  </td>  
+                  
+                         <% } %>
+
+                                    
                                       <!-- <td class="center"><%=WMSDATA .kullanici_giris .kullaniciİsim%> <%=WMSDATA .kullanici_giris .kullaniciSoyisim  %></td>-->
                                     
-   
-                         
+                                         <td> 
+                                                       <a href="hareketGoruntule.aspx?id_duzenle=<%= id[i]%>" class="btn btn-white" data-toggle="modal" data-target="#myModal2" >
+                                       
+                                    Hareket Düzenle <%= id[i]%>
+                                          
+                                </a>
+                                             
+                                             <%--<a href="hareketGoruntule.aspx?id_duzenle=<%= id[i]%>"  type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#myModal2">
+                                    Hareket Düzenle <%= id[i]%>
+                                          
+                                </a>--%>
+                                                   <div class="modal inmodal" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content animated flipInY">
+                                            <div class="modal-header">
+                                                 <h4 class="modal-title">Personel Hareket Düzenle</h4>
+                                                <small class="font-bold">Değiştirdiğiniz bilgi tüm kullanıcılar için görünür olacaktir.</small>
+                                            </div>
+                                            <div class="modal-body">
 
+
+                                <div class="dd-handle">
+                                                    <div class="form-group">
+                                                        <div class="col-sm-12" style="text-align: left">Yevmiye bedeli :
+                                                   <input id="hareketId" type="text"  runat="server" value="<%=id[i]%> " required="" class="form-control">
+                                               
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                <div class="form-group">
+                                    <fieldset>
+                                        <div class="col-sm-12" style="text-align: left">Çalışma Zaman Durumu <%= id[i] %>:
+                                        &nbsp 
+                                        <select id="calismaDurum" name="calismaDurum" runat="server">
+                                                <option value=""></option>
+                                                <option value="true">Tam</option>
+                                                <option value="false">Yarım</option>
+                                                <option value="false">Eksik Çalışma</option>
+                                                <option value="false">Mesai</option>
+                                        </select>
+                                             </div>
+                                    </fieldset>
+                                </div>
+                            
+                                
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-white" data-dismiss="modal">KAPAT</button>
+                                                     <a href="#"   class="btn btn-primary" id="personelCalismaKaydet" runat="server" onserverclick="personelCalismaKaydet_ServerClick">
+                                    <i class="fa fa-check"></i>KAYDET
+                                </a>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                         </td>    
+                       
+                             
+                           
                                       </tr> 
                                     <% } %>
                       
