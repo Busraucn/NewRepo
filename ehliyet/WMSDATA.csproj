@@ -1421,6 +1421,7 @@
     <Content Include="personel_adina_izin_ekle.aspx" />
     <Content Include="personel_ekle.aspx" />
     <Content Include="personel_izin_ekle.aspx" />
+    <Content Include="personel_navigation.aspx" />
     <Content Include="personel_yovmiye_tanimla.aspx" />
     <Content Include="proje_bolum_kayit.aspx" />
     <Content Include="proje_kayit.aspx" />
@@ -1790,6 +1791,13 @@
     </Compile>
     <Compile Include="personel_izin_ekle.aspx.designer.cs">
       <DependentUpon>personel_izin_ekle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="personel_navigation.aspx.cs">
+      <DependentUpon>personel_navigation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="personel_navigation.aspx.designer.cs">
+      <DependentUpon>personel_navigation.aspx</DependentUpon>
     </Compile>
     <Compile Include="personel_yovmiye_tanimla.aspx.cs">
       <DependentUpon>personel_yovmiye_tanimla.aspx</DependentUpon>

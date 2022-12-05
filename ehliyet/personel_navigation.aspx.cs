@@ -15,7 +15,7 @@ using QRCoder;
 
 namespace WMSDATA
 {
-    public partial class personel_ekle : System.Web.UI.Page
+    public partial class personel_navigation : System.Web.UI.Page
     {
         public static string veritabani_baglanti = ConfigurationManager.ConnectionStrings["OSGBAPPCONNECTION"].ConnectionString;
         //   String veritabani_baglanti = kullanici_giris.veritabani_baglanti;
@@ -155,9 +155,8 @@ namespace WMSDATA
             
             sayfayukleme();
             personelgetir();
-            if (fluPicture.PostedFile != null && fluPicture.PostedFile.ContentLength > 0)
-                UpLoadAndDisplay();
-            sehir();
+          
+            
         }
         public void qruertici()
         {
@@ -174,145 +173,20 @@ namespace WMSDATA
                 }
             }
         }
-        public void sehir()
-        { 
-                    anafirma.Items.Add("");
-            //   altfirma.Items.Add("");
-            SqlCommand s2 = new SqlCommand("SELECT * FROM sehir  ", con);
-            SqlDataReader oku2 = s2.ExecuteReader();
-            while (oku2.Read())
-            {
-                anafirma.Items.Add(oku2["adi"].ToString());
-                // altfirma.Items.Add(oku2["sirketAdı"].ToString());
-            }
-            oku2.Close();
-        }
+      
 
-        public void fTextChanged(object sender, EventArgs e)
-        {
-            ilce();
-        }
-        public void ilce()
+       
+      
+     
+     
 
-        {
-            ilcesec.Items.Clear();
-            ilcesec.Items.Add("");
-            SqlCommand s3 = new SqlCommand("SELECT * FROM VIEW_IL_ILCE where SEHIRADI='" + anafirma.Text + "'", con);
-            SqlDataReader oku3 = s3.ExecuteReader();
-            while (oku3.Read())
-            {
-                ilcesec.Items.Add(oku3["adi"].ToString());
-            }
-            oku3.Close();
-        }
-        public void ilce2()
-
-        {
-            ilcesec.Items.Clear();
-            ilcesec.Items.Add("");
-            SqlCommand s3 = new SqlCommand("SELECT * FROM VIEW_IL_ILCE", con);
-            SqlDataReader oku3 = s3.ExecuteReader();
-            while (oku3.Read())
-            {
-                ilcesec.Items.Add(oku3["adi"].ToString());
-            }
-            oku3.Close();
-        }
-        public void gorevtanimlari()
-        {
-            if (gorevlist.Text == "")
-            {
-                gorevlist.Items.Clear();
-            gorevlist.Items.Add("");
-            SqlCommand s3 = new SqlCommand("SELECT * FROM PersonelGorevTanim WHERE kurum_id='"+kullanici_giris.kullaniciSİrket_id+"'", con);
-            SqlDataReader oku3 = s3.ExecuteReader();
-            while (oku3.Read())
-            {
-                gorevlist.Items.Add(oku3["PersonelGorevi"].ToString());
-            }
-            oku3.Close();
-            }
-        }
-        public void departmantanimlari()
-        {
-            if (departmanlist.Text == "")
-            {
-                departmanlist.Items.Clear();
-            departmanlist.Items.Add("");
-            SqlCommand s3 = new SqlCommand("SELECT * FROM personeldepartman WHERE kurum_id='" + kullanici_giris.kullaniciSİrket_id + "'", con);
-            SqlDataReader oku3 = s3.ExecuteReader();
-            while (oku3.Read())
-            {
-                departmanlist.Items.Add(oku3["DepartmanAdi"].ToString());
-            }
-            oku3.Close();
-            }
-        }
-        private void UpLoadAndDisplay()
-        {
-            resimguncellenecek = 1;
-            bytes = null;
-            imgName = fluPicture.FileName;
-            //imgPath = "images/" + imgName;
-            imgSize = fluPicture.PostedFile.ContentLength;
-            if (fluPicture.PostedFile != null && fluPicture.PostedFile.FileName != "")
-            {
-                fluPicture.SaveAs(Server.MapPath("~/images/") + fluPicture.FileName);
-               imgPicture.ImageUrl = (Server.MapPath("~/images/") + fluPicture.FileName);
-            }
-
-            using (BinaryReader br = new BinaryReader(fluPicture.PostedFile.InputStream))
-            {
-                bytes = br.ReadBytes(fluPicture.PostedFile.ContentLength);
-            }
-
-
-        }
         protected void temizleyici()
         {
             guncellenecekpersonel = 0;
             isim.Value = "";
             imgPicture.ImageUrl = "";
             soyisim.Value = "";
-            DateTime tarih1=Convert.ToDateTime("1900 - 01 - 01 00:00:00.000");
-            DOGUMTARIHI.Value = tarih1.ToString();
-            dogumyeri.Value = "";
-            cinsiyet1.Value = "";
-            kizliksoyadi.Value = "";
-            anneadi.Value = "";
-            babaadi.Value = "";
-            medenidurum1.Value = "";
-            cocuksayisi.Value = "0";
-            kangrubu1.Value = "";
-            telefon1.Value = "";
-            telefon2.Value = "";
-            mailadresi.Value = "";
-            ulke.Value = "";
-            anafirma.Text = "";
-            ilcesec.Text = "";
-            mahalle.Value = "";
-            adres.Value = "";
-            no.Value = "";
-            postakodu.Value = "";
-            engeldurumu1.Value = "";
-            engelorani.Value = "0";
-            not.Value = "";
-            checkbox1.Checked = false;
-            checkbox2.Checked = false;
-            checkbox3.Checked = false;
-            checkbox4.Checked = false;
-            checkbox5.Checked = false;
-            checkbox6.Checked = false;
-            checkbox7.Checked = false;
-            departmanlist.Text = "";
-            gorevlist.Text = "";
-            emeklidurumu1.Value = "";
-            calismadurumu1.Value = "";
-            DateTime tarih2 = Convert.ToDateTime("1900 - 01 - 01 00:00:00.000");
-            isebaslamatarihi.Value = tarih2.ToString();
-            DateTime tarih3 = Convert.ToDateTime("1900 - 01 - 01 00:00:00.000");
-            istenayrilmatarihi.Value=tarih3.ToString();
-            kartkodu.Value = "";
+
 
         }
         protected void sayfayukleme()
@@ -418,50 +292,17 @@ namespace WMSDATA
                 con.Close();
                 con.Open();
             }
-            gorevtanimlari();
-            departmantanimlari();
+
             arama_genel_GENELTUMU();
         }
 
-        protected void tckimlikdogrula(object sender, EventArgs e)
-        {
-            if (tckimlik.Text != "" & tckimlik.Text != null & isim.Value != "" & isim.Value != null & soyisim.Value != "" & soyisim.Value != null)
-            {
-                if (DOGUMTARIHI.Value=="") { DOGUMTARIHI.Value = DateTime.Today.ToString("yyyy-MM-dd"); }
-            long tcno = Convert.ToInt64(tckimlik.Text);
-            String ad_ = isim.Value;
-            String soyad_ = soyisim.Value;
-            String dogumyili = DOGUMTARIHI.Value.Substring(0, 4).ToString();
-            int dogumt = Convert.ToInt32(dogumyili);
-            tcNoDogrula.KPSPublic tcdogrula = new tcNoDogrula.KPSPublic();
-            try
-            {
-                bool kontrol = tcdogrula.TCKimlikNoDogrula(tcno, ad_, soyad_, dogumt);
-                if (kontrol == true)
-                {
-                    dogru_uyari.Visible = true;
-                    yanlis_uyari.Visible = false;
-                    uyari_dogru = "Girilen Kimlik Bilgileri Doğrulandı";
-
-                }
-                else
-                {
-                    dogru_uyari.Visible = false;
-                    yanlis_uyari.Visible = true;
-                    uyari_yanlis = "Girilen Kimlik Bilgileri Doğrulanamadı.";
-                }
-            }
-            catch (Exception er)
-            {
-                }
-            }
-        }
+ 
         protected void Personel_Getir(object sender, EventArgs e)
         {
             try
             {
                 temizleyici();
-                ilce2();                
+               
                 string secilen1 = tckimlik1.Text;
                 string sonsecilen2 = secilen1.Split(' ').First();
                 tckimlik.Text = sonsecilen2;
@@ -481,49 +322,7 @@ namespace WMSDATA
                     }
                     tcnumarasi= dr["tcno"].ToString();
                     soyisim.Value = dr["soyad"].ToString();
-                    cinsiyet1.Value = dr["cinsiyet"].ToString();
-                    kizliksoyadi.Value = dr["kızlıksoyadı"].ToString();
-                    anneadi.Value = dr["anneadı"].ToString();
-                    babaadi.Value = dr["babaadı"].ToString();
-                    dogumtarihim2 = Convert.ToDateTime(dr["doğumtarihi"]);
-                    DOGUMTARIHI.Value = dogumtarihim2.ToString("yyyy-MM-dd");
-
-
-                    dogumyeri.Value = dr["doğumyeri"].ToString();
-                    medenidurum1.Value = dr["medenidurumu"].ToString();
-                    cocuksayisi.Value = dr["cocuksayisi"].ToString();
-                    kangrubu1.Value = dr["kangrubu"].ToString();
-                    telefon1.Value = dr["TelefonEv"].ToString();
-                    telefon2.Value = dr["TelefonCep"].ToString();
-                    ulke.Value = dr["adresulke"].ToString();
-                    mahalle.Value = dr["adresmahalle"].ToString();
-                    adres.Value = dr["adrescaddesokak"].ToString();
-                    postakodu.Value = dr["adrespostakodu"].ToString();
-                    no.Value = dr["adreskapıno"].ToString();
-                    calismadurumu1.Value = dr["durumu"].ToString();
-                    isegiristarihim2 = Convert.ToDateTime(dr["IşeBaşlamaTarihi"]);
-                    isebaslamatarihi.Value = isegiristarihim2.ToString("yyyy-MM-dd");
-                    istenayrilmatarihim2 = Convert.ToDateTime(dr["IştenAyrılmaTarihi"]);
-                    istenayrilmatarihi.Value = istenayrilmatarihim2.ToString("yyyy-MM-dd");
-                    emeklidurumu1.Value = dr["emeklilikdurumu"].ToString();
-                    not.Value = dr["pnot"].ToString();
-                    mailadresi.Value = dr["mailadresi"].ToString();
-                    engeldurumu1.Value = dr["engeldurumu"].ToString();
-                    engelorani.Value = dr["engelorani"].ToString();
-                    anafirma.Text = dr["AdresIl"].ToString();
-                   // ilce();
-                    ilcesec.Text = dr["AdresIlçe"].ToString();
-                    gorevlist.Text = dr["tipi"].ToString();
-                    kartkodu.Value = dr["kartno"].ToString();
-                    departmanlist.Text= dr["departman"].ToString();
-                     if (dr["1"].ToString() == "1") { checkbox1.Checked = true; } else { checkbox1.Checked = false; }
-                     if (dr["2"].ToString() == "1") { checkbox2.Checked = true; } else { checkbox2.Checked = false; }
-                     if (dr["3"].ToString() == "1") { checkbox3.Checked = true; } else { checkbox3.Checked = false; }
-                     if (dr["4"].ToString() == "1") { checkbox4.Checked = true; } else { checkbox4.Checked = false; }
-                     if (dr["5"].ToString() == "1") { checkbox5.Checked = true; } else { checkbox5.Checked = false; }
-                     if (dr["6"].ToString() == "1") { checkbox6.Checked = true; } else { checkbox6.Checked = false; }
-                     if (dr["7"].ToString() == "1") { checkbox7.Checked = true; } else { checkbox7.Checked = false; }
-                    qruertici();
+                     qruertici();
                 }
                 dr.Close();
             }
@@ -567,100 +366,7 @@ namespace WMSDATA
             return letters[rnd.Next(letters.Length)];
         }
 
-        protected void Personel_Kaydet(object sender, EventArgs e)
-        {       // con.Open();
-            yenisifre = RastgeleUret();
-            conn.Open();    
-            connn.Open();
-            if (tckimlik.Text != "" & tckimlik.Text != null & isim.Value != "" & isim.Value != null & soyisim.Value != "" & soyisim.Value != null & mailadresi.Value != "" & mailadresi.Value != null)
 
-            {
-                SqlCommand cmd = new SqlCommand("PersonelKaydetGuncelle", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("tcNo", tckimlik.Text);
-            cmd.Parameters.AddWithValue("ad", isim.Value);
-            cmd.Parameters.AddWithValue("soyad", soyisim.Value);
-            cmd.Parameters.AddWithValue("cinsiyet", cinsiyet1.Value);
-            cmd.Parameters.AddWithValue("kızlıkSoyadı", kizliksoyadi.Value);
-            cmd.Parameters.AddWithValue("anneadi", anneadi.Value);
-            cmd.Parameters.AddWithValue("babaadi", babaadi.Value);
-            cmd.Parameters.AddWithValue("dogumtarihi", DOGUMTARIHI.Value);
-            cmd.Parameters.AddWithValue("dogumyeri", dogumyeri.Value);
-            cmd.Parameters.AddWithValue("medenidurumu", medenidurum1.Value);
-            cmd.Parameters.AddWithValue("cocuksayisi", cocuksayisi.Value);
-            cmd.Parameters.AddWithValue("kangrubu", kangrubu1.Value);
-            cmd.Parameters.AddWithValue("telefonev", telefon1.Value);
-            cmd.Parameters.AddWithValue("telefoncep", telefon2.Value);
-            cmd.Parameters.AddWithValue("adresulke", ulke.Value);
-            cmd.Parameters.AddWithValue("adresil", anafirma.Text);
-            cmd.Parameters.AddWithValue("adresilçe", ilcesec.Text);
-            cmd.Parameters.AddWithValue("adresmahalle", mahalle.Value);
-            cmd.Parameters.AddWithValue("adrescaddesokak", adres.Value);
-            cmd.Parameters.AddWithValue("AdresPostaKodu", postakodu.Value);
-            cmd.Parameters.AddWithValue("adreskapıno", no.Value);
-            cmd.Parameters.AddWithValue("durumu", calismadurumu1.Value);
-            cmd.Parameters.AddWithValue("isebaslamatarihi", isebaslamatarihi.Value);
-            cmd.Parameters.AddWithValue("istenayrilmatarihi", istenayrilmatarihi.Value);
-            cmd.Parameters.AddWithValue("tipi", gorevlist.Text);
-            cmd.Parameters.AddWithValue("emeklilikdurumu", emeklidurumu1.Value);
-            cmd.Parameters.AddWithValue("pnot", not.Value);
-            cmd.Parameters.AddWithValue("mailadresi", mailadresi.Value);
-            cmd.Parameters.AddWithValue("engeldurumu", engeldurumu1.Value);
-            cmd.Parameters.AddWithValue("engelorani", engelorani.Value);
-            cmd.Parameters.AddWithValue("KartNo", kartkodu.Value);
-            cmd.Parameters.AddWithValue("kurum_id", kullanici_giris.kullaniciSİrket_id);
-            cmd.Parameters.AddWithValue("departman", departmanlist.Text);
-            int k = cmd.ExecuteNonQuery();
-                if (k != 0 && guncellenecekpersonel==0)
-                {
-                    
-                    uyari_dogru = "Kayıt Başarı ile tamamlandı";
-                    SqlCommand ww = new SqlCommand("UPDATE personel SET sifre= HASHBYTES('MD5','" + yenisifre + "') WHERE tcno='" + tckimlik.Text + "' and mailadresi='" + mailadresi.Value + "'", con);
-                    ww.ExecuteNonQuery();
-                    SqlDataReader dw = ww.ExecuteReader();
-                    dw.Close();
-                mailgonder();
-
-                }
-
-            SqlCommand cmd2 = new SqlCommand("PersonelCalismaGunTakipKaydetGuncelle", conn);
-            cmd2.CommandType = CommandType.StoredProcedure;
-            cmd2.Parameters.AddWithValue("PPersonelId", tckimlik.Text);
-            cmd2.Parameters.AddWithValue("p1", checkbox1.Checked);
-            cmd2.Parameters.AddWithValue("p2", checkbox2.Checked);
-            cmd2.Parameters.AddWithValue("p3", checkbox3.Checked);
-            cmd2.Parameters.AddWithValue("p4", checkbox4.Checked);
-            cmd2.Parameters.AddWithValue("p5", checkbox5.Checked);
-            cmd2.Parameters.AddWithValue("p6", checkbox6.Checked);
-            cmd2.Parameters.AddWithValue("p7", checkbox7.Checked);
-            cmd2.Parameters.AddWithValue("Pvardiya", "vardiya1");
-            cmd2.Parameters.AddWithValue("PSirketId", kullanici_giris.kullaniciSİrket_id);
-            int l = cmd2.ExecuteNonQuery();
-                if (l != 0)
-                {
-                    uyari_dogru = "Kayıt Başarı ile tamamlandı";
-
-                }
-                if (resimguncellenecek == 1)
-                    {
-                    SqlCommand cmd3 = new SqlCommand("PersonelResimKaydetGuncelle", connn);
-                    cmd3.CommandType = CommandType.StoredProcedure;
-                    cmd3.Parameters.AddWithValue("TcNo", tckimlik.Text);
-                        cmd3.Parameters.AddWithValue("resim", bytes);
-                        cmd3.Parameters.AddWithValue("SirketId", kullanici_giris.kullaniciSİrket_id);
-                   
-                    int m = cmd3.ExecuteNonQuery();
-
-                    if (m != 0)
-                    {
-                        resimguncellenecek = 0;
-                    }
-                   }
-            }
-            con.Close();
-            conn.Close();  
-            connn.Close();
-        }
         protected void personeladinaizinsayfasiac(object sender, EventArgs e)
         {
             tcsecilen = tckimlik.Text;
@@ -791,61 +497,6 @@ namespace WMSDATA
         private void MessageBox(string v)
         {
             throw new NotImplementedException();
-        }
-        protected void mailgonder()
-        {
-            
-            if (guncellenecekpersonel == 0) { 
-            string mailadresimails = "";
-            string mailgondericimails = "";
-            string mailkullanicimails = "";
-            string mailsifremails = "";
-            string smtpadresmails = "";
-            string smtpportmails = "";
-
-            SqlCommand r = new SqlCommand("SELECT * FROM mail_kullanici_view WHERE tc='" + kullanici_giris.kullaniciTc + "'", con);
-            SqlDataReader okus = r.ExecuteReader();
-            if (okus.Read())
-            {
-
-                mailadresimails = okus["mailadresi"].ToString();
-                mailgondericimails = okus["mailgonderici"].ToString();
-                mailkullanicimails = okus["mailkullanici"].ToString();
-                mailsifremails = okus["mailsifre"].ToString();
-                smtpadresmails = okus["smtpadres"].ToString();
-                smtpportmails = okus["smtpport"].ToString();
-            }
-            okus.Close();
-            
-            try
-            {
-                System.Net.Mail.MailMessage msg = new System.Net.Mail.MailMessage();
-                msg.From = new MailAddress(mailadresimails, mailgondericimails); ;
-                msg.To.Add(new MailAddress(mailadresi.Value));
-                msg.IsBodyHtml = true;
-                msg.Subject = " WMSDATA HOŞGELDİNİZ";
-                msg.Body = @"<html>
-                      <body > <a >
-                        <div >      
-                           <i><font color=black  ><h1><strong> WMSDATA</strong></h1></font> </i>
-                          </div>
-                 <i >  <h3> Merhaba ; </h3></i >  <p><i ><a href='http://www.wmsdata.net/'  > WMSDATA  Sistemine kaydınız başarı ile gerçekleşmiştir </a> şifreniz:" + yenisifre + "  Email ve şifre ile giriş yapabilirsiniz. Not: İlk girişte şifrenizi değiştirmeyi unutmayınız. </i> </p>    <hr width=50000 size=2 color=teal align=left />  <address>  <strong> WMSDATA '"+DateTime.Now.ToString()+ "'</strong><br>  </address> </div> </a>  </div></body> </html>  ";
-                SmtpClient mySmtpClient = new SmtpClient();
-                System.Net.NetworkCredential myCredential = new System.Net.NetworkCredential(mailkullanicimails, mailsifremails);
-                mySmtpClient.Host = smtpadresmails;
-                mySmtpClient.Port = Convert.ToInt32(smtpportmails);
-                mySmtpClient.EnableSsl = false;
-                mySmtpClient.UseDefaultCredentials = false;
-                mySmtpClient.Credentials = myCredential;
-                mySmtpClient.Send(msg);
-                msg.Dispose();
-            }
-            catch (Exception exp)
-            {
-
-            }
-
-        }
         }
     }
 }

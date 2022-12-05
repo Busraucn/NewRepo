@@ -75,6 +75,7 @@
                     <li>  
                         <a href="#"><i class="fa fa-plus-circle"></i> <span class="nav-label">PERSONEL</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
+                            <li><a href="personel_navigation.aspx"><i class="fa fa-diamond "></i> PERSONEL YÖNETİM</a></li>
                             <li><a href="personel_ekle.aspx"><i class="fa fa-diamond "></i> PERSONEL KAYIT</a></li>
                             <li><a href="belge_ekle.aspx"><i class="fa fa-diamond "></i> PERSONEL BELGE KAYIT</a></li>
                             <li><a href="personelmaaskayit.aspx"><i class="fa fa-diamond "></i> PERSONEL MAAŞ İŞLEMLERİ</a></li>

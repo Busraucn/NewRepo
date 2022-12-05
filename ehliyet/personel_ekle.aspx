@@ -96,7 +96,7 @@
                  <div class="ibox-content">
                         <div class="row">
                             <div class="col-sm-6 2-r"><h3 class="m-t-none m-b"></h3> <div>
-        <asp:Image ID="imgPicture" Width="160" Height="90" runat="server" />
+        <asp:Image ID="imgPicture" Width="160" Height="160" runat="server" />
         <asp:FileUpload ID="fluPicture" onchange="this.form.submit();"
             runat="server" Width="240" />
             </div>&nbsp
