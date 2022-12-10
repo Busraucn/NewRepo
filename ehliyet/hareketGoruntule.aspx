@@ -10,7 +10,7 @@
     <link href="css/plugins/cropper/cropper.min.css" rel="stylesheet">
 
     <link href="css/plugins/switchery/switchery.css" rel="stylesheet">
-
+        <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="css/plugins/jasny/jasny-bootstrap.min.css" rel="stylesheet">
 
     <link href="css/plugins/nouslider/jquery.nouislider.css" rel="stylesheet">
@@ -35,6 +35,7 @@
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
+  
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
    <form id="form1" runat="server">
@@ -172,24 +173,24 @@
                                   <%  }%> 
                                     <%else{ %>
                          
-                           <td> Düzenlenme Yok <%= id[i] %>  </td>  
+                           <td> Düzenlenme Yok  </td>  
                   
                          <% } %>
+ <td> 
+                                     <a class="btn  btn-primary dim" href="hareketGoruntule.aspx?id_duzenle=<%= id[i]%>&veri=1"   type="button"><i class="fa fa-check"></i></a>
+                                     <a class="btn  btn-warning dim" href="hareketGoruntule.aspx?id_duzenle=<%= id[i]%>&veri=2"  type="button"><i class="fa fa-chevron-down"></i></a>
+                                     <a class="btn  btn-danger  dim" href="hareketGoruntule.aspx?id_duzenle=<%= id[i]%>&veri=3"  type="button"><i class="fa fa-close"></i></a>
+                                     <a class="btn  btn-success dim" href="hareketGoruntule.aspx?id_duzenle=<%= id[i]%>&veri=4"  type="button"> <i class="fa fa-superscript"></i> </a>
 
-                                    
-                                      <!-- <td class="center"><%=WMSDATA .kullanici_giris .kullaniciİsim%> <%=WMSDATA .kullanici_giris .kullaniciSoyisim  %></td>-->
-                                    
-                                         <td> 
-                                                       <a href="hareketGoruntule.aspx?id_duzenle=<%= id[i]%>" class="btn btn-white" data-toggle="modal" data-target="#myModal2" >
-                                       
-                                    Hareket Düzenle <%= id[i]%>
+
+
+     </td>
+                                             
+                                  <%--          <a href="#"  type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#myModal2">
+                                    Hareket Düzenle 
                                           
                                 </a>
                                              
-                                             <%--<a href="hareketGoruntule.aspx?id_duzenle=<%= id[i]%>"  type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#myModal2">
-                                    Hareket Düzenle <%= id[i]%>
-                                          
-                                </a>--%>
                                                    <div class="modal inmodal" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content animated flipInY">
@@ -200,34 +201,25 @@
                                             <div class="modal-body">
 
 
-                                <div class="dd-handle">
-                                                    <div class="form-group">
-                                                        <div class="col-sm-12" style="text-align: left">Yevmiye bedeli :
-                                                   <input id="hareketId" type="text"  runat="server" value="<%=id[i]%> " required="" class="form-control">
-                                               
-                                                        </div>
-                                                    </div>
-                                                </div>
-
                                 <div class="form-group">
                                     <fieldset>
                                         <div class="col-sm-12" style="text-align: left">Çalışma Zaman Durumu <%= id[i] %>:
                                         &nbsp 
-                                        <select id="calismaDurum" name="calismaDurum" runat="server">
+                                        <select id="calismaDurum" name="calismaDurum" onselectedindexchanged="ddlselect_Changed" runat="server">
                                                 <option value=""></option>
-                                                <option value="true">Tam</option>
-                                                <option value="false">Yarım</option>
-                                                <option value="false">Eksik Çalışma</option>
-                                                <option value="false">Mesai</option>
+                                                <option value="Tam">Tam</option>
+                                                <option value="Yarım">Yarım</option>
+                                                <option value="Eksik Çalışma">Eksik Çalışma</option>
+                                                <option value="Mesai">Mesai</option>
                                         </select>
                                              </div>
                                     </fieldset>
                                 </div>
                             
-                                
+                             
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-white" data-dismiss="modal">KAPAT</button>
-                                                     <a href="#"   class="btn btn-primary" id="personelCalismaKaydet" runat="server" onserverclick="personelCalismaKaydet_ServerClick">
+                                                     <a href="hareketGoruntule.aspx?id_duzenle=<%= id[i]%>"  class="btn btn-primary" id="personelCalismaKaydet" >
                                     <i class="fa fa-check"></i>KAYDET
                                 </a>
 
@@ -236,7 +228,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                         </td>    
+                                         </td>    --%>
                        
                              
                            
@@ -350,7 +342,7 @@
 
     </script>
 
-        
+      
 
    
             </form> 

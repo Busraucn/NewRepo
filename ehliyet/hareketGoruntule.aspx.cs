@@ -48,7 +48,7 @@ namespace WMSDATA
         public static string[] ElleDuzeltildi;
         public static string[] HareketSonuc;
 
-        public static string view_ad = "";
+        public static string calismadurumduzenle = "";
         public static string view_tc = "";
         public static string view_belget = "";
 
@@ -214,9 +214,14 @@ namespace WMSDATA
 
                 }
             }
-             id_duzenle = Request["id_duzenle"];
-        
+            if (Request.QueryString["id_duzenle"] != null)
+            {
+                id_duzenle = Request.QueryString["id_duzenle"].ToString();
+               calismadurumduzenle = Request.QueryString["veri"].ToString();
+                personelCalismaKaydet_ServerClick(this,e);
+            }
 
+            id_duzenle = "";
             dogru_uyari.Visible = false;
             yanlis_uyari.Visible = false;
             bugununtarihim = bugununtarihi.ToString();
@@ -233,7 +238,7 @@ namespace WMSDATA
   
              con.Close();
         }
-
+     
         protected void arama_genel_GENEL()
         {
             if (ilktariharama.Value != null && ilktariharama.Value != "")
@@ -320,15 +325,35 @@ namespace WMSDATA
         {
             throw new NotImplementedException();
         }
-
-        protected void personelCalismaKaydet_ServerClick(object sender, EventArgs e)
+      
+        public void personelCalismaKaydet_ServerClick(object sender, EventArgs e)
         {
-
-          
+            string durum = "";
             con.Open();
-            if (Request.QueryString["id_duzenle"] != null)
+            if (id_duzenle != "")
             {
-                SqlCommand ww = new SqlCommand("UPDATE Hareket set ElleDuzeltildi=1 , HareketSonuc='" + calismaDurum.Value + "' where Id ='" + int.Parse( hareketId.Value) + "'", con);
+                if(calismadurumduzenle == "1")
+                {
+                    durum = "Tam";
+
+                }
+               else if (calismadurumduzenle == "2")
+                {
+                    durum = "Yarım Gün";
+
+                }
+                else if (calismadurumduzenle == "3")
+                {
+                    durum = "Eksik";
+
+                }
+                else if (calismadurumduzenle == "4")
+                {
+                    durum = "Mesai";
+
+                }
+
+                SqlCommand ww = new SqlCommand("UPDATE Hareket set ElleDuzeltildi=1 , HareketSonuc='" + durum + "' where Id ='" + int.Parse(id_duzenle) + "'", con);
                 ww.ExecuteNonQuery();
                 SqlDataReader dw = ww.ExecuteReader();
                 dw.Close();
